@@ -1,0 +1,98 @@
+<div class="container">
+    <div>
+        <a routerLink="add-product">Add a new product</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="text-uppercase">
+                <tr>
+                    <th>
+                        <div class="py-2">Id</div>
+                    </th>
+                    <th>
+                        <div class="py-2">Name</div>
+                    </th>
+                    <th>
+                        <div class="py-2">Price</div>
+                    </th>
+                    <th>
+                        <div class="py-2">Brand</div>
+                    </th>
+                    <th>
+                        <div class="py-2">Type</div>
+                    </th>
+                    <th>
+                        <div class="py-2">Edit</div>
+                    </th>
+
+                    <th>
+                        <div class="py-2">Remove</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of products">
+                    <div class="p-2 d-inline-block">
+                        <div class="ms-3 d-inline-block inline-middle">
+                            <h5 class="mb-0">
+                                {{item.id}} 
+                            </h5>
+                        </div>
+                    </div>
+                    <td class="align-middle">
+                        <div class="ms-3 d-inline-block inline-middle">
+                            <span class="text-muted fst-italic">
+                               {{item.name}}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <div class="ms-3 d-inline-block inline-middle">
+                            <span class="text-muted fst-italic">
+                                {{item.price}}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <div class="ms-3 d-inline-block inline-middle">
+                            <span class="text-muted fst-italic">
+                                {{item.productBrand}}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <div class="ms-3 d-inline-block inline-middle">
+                            <span class="text-muted fst-italic">
+                                {{item.productType}}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="align-middle">
+                        <a class="text-danger" (click)="editProduct(item)">
+                            <i
+                            class="fa fa-edit" 
+                            style="font-size: 2em; cursor: pointer;" 
+                            ></i>
+                        </a>
+                    </td>
+                    <td class="align-middle">
+                        <a class="text-danger">
+                            <i
+                            class="fa fa-trash" 
+                            style="font-size: 2em; cursor: pointer;" 
+                            (click)="deleteProduct(item.id)"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="totalCount > 0">
+    <app-pager
+      [pageSize]="shopParams.pageSize"
+      [totalCount]="totalCount"
+      (pageChanged)="onPageChanged($event)"
+    ></app-pager>
+  </div>

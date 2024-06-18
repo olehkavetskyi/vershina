@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-3">
+        <form [formGroup]="typeForm" (ngSubmit)="onSubmit()">
+            <div class="text-center mb-4">
+                <h1 class="mb-3">Create a new type</h1>
+            </div>
+
+            <app-text-input [formControl]="typeForm.controls['name']" [label]="'Name'"></app-text-input>
+  
+            <div class="d-grid">
+            <button class="btn btn-lg btn-primary mt-3" type="submit"  [disabled]="!typeForm.valid">
+                Create
+            </button>
+            </div>
+        </form>
+    </div>
+</div>

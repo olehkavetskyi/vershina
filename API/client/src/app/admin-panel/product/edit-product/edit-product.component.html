@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-3">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+          <app-text-input [formControl]="productForm.controls['name']" [label]="'Name'"></app-text-input>
+          <app-text-input [formControl]="productForm.controls['description']" [label]="'Description'"></app-text-input>
+          <app-text-input [formControl]="productForm.controls['price']" [type]="'number'" [label]="'Price'"></app-text-input>
+          <select class="form-select mb-3" [formControl]="productForm.controls['brand']">
+              <option *ngFor="let brand of brands" [value]="brand.id">
+                  {{ brand.name }}
+              </option>
+          </select>
+          <select class="form-select mb-3" [formControl]="productForm.controls['type']">
+              <option *ngFor="let type of types" [value]="type.id">
+                  {{ type.name }}
+              </option>
+          </select>
+  
+          <div class="form-floating mb-3">
+              <input
+                type="file" 
+                class="form-control" 
+                placeholder="photo"
+                (change)="onFileSelected($event)"
+                >
+          </div>
+          <img id="prod_img" src="{{product.pictureUrl}}" alt="">
+          <div class="d-grid">
+              <button class="btn btn-lg btn-primary mt-3" type="submit" [disabled]="!productForm.valid">
+                  Edit
+              </button> 
+          </div>
+        </form>
+  </div>
+  

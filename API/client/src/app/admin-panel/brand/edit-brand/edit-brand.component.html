@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-3">
+        <form [formGroup]="brandForm" (ngSubmit)="onSubmit()">
+            <div class="text-center mb-4">
+                <h1 class="mb-3">Edit the brand</h1>
+            </div>
+            <div>Id: {{brand?.id}}</div>
+            <app-text-input [formControl]="brandForm.controls['name']" [label]="'Name'"></app-text-input>
+  
+            <div class="d-grid">
+            <button class="btn btn-lg btn-primary mt-3" type="submit"  [disabled]="!brandForm.valid">
+                Edit
+            </button>
+            </div>
+        </form>
+    </div>
+</div>
